@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="description"
+      content="Rainydays product page. Choose your size and read the product information."
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rainydays | Product page</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=Poppins:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./css/styles.css" />
+    <link rel="stylesheet" href="./css/product.css" />
+    <link rel="stylesheet" href="./css/media.css" />
+    <script src="./js/productWomen.js" defer type="module"></script>
+    <script src="./js/ui/navbar.js" defer type="module"></script>
+    <script
+      src="https://kit.fontawesome.com/d272d399a5.js"
+      crossorigin="anonymous"
+    ></script>
+    
+  </head>
+  <body>
+    <header>
+      <nav class="flex-wrapper__nav">
+        <input type="checkbox" id="menu-checkbox" />
+        <label for="menu-checkbox" class="flex-item__nav-bars"
+          ><i class="fas fa-bars"></i
+        ></label>
+        <div class="flex-item__nav-center">
+          <a href="./index.html" class="flex-item__nav-center-header"
+            >Rainy days</a
+          >
+        </div>
+
+        <ul class="flex-item__nav-left">
+          <li><a href="./index.html">Home</a></li>
+          <li> <a href="./shopWomen.html">Women</a></li>
+          <li> <a href="./shop.html">Men</a></li>
+          <li><a href="./about.html">About</a></li>
+          <li><a href="./contact.html">Contact</a></li>
+        </ul>
+        <div class="flex-item__nav-right">
+          <i class="fa-solid fa-magnifying-glass" id="search-button"></i>
+
+          <div id="search-popup">
+            <input
+              type="text"
+              placeholder="Search..."
+              id="popup-search-input"
+            />
+            <button id="close-button">Close</button>
+          </div>
+
+          <a href="./checkoutWomen.html"><i class="fa-solid fa-bag-shopping"></i></a>
+        </div>
+        </nav>
+    </header>
+    <main>
+      <div class="flex__wrapper-product-page"></div>
+      <div class="exploreContainer"></div>
+
+    
+    </main>
+    <footer>
+      <div class="flex-wrapper__footer">
+        <div class="footer-media">
+          <i class="fa-brands fa-twitter"></i>
+          <i class="fa-brands fa-facebook"></i>
+          <i class="fa-brands fa-instagram"></i>
+        </div>
+        <div class="footer-links">
+          <a href="./about.html" class="flex-item__footer-a">About</a>
+          <a href="./contact.html" class="flex-item__footer-a">Contact</a>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

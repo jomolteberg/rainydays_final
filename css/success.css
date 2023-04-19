@@ -1,0 +1,41 @@
+.main__success {
+  background-image: url(../images/success\ bg\ image\ resize.jpg);
+  align-self: center;
+  background-size: cover;
+  background-position: bottom;
+  min-height: 1200px;
+  max-width: 60%;
+  width: 80%;
+  margin: 3rem auto;
+}
+
+.success-text {
+  background-color: rgba(0, 0, 0, 0.7);
+  height: 225px;
+  width: 500px;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  position: relative;
+  justify-content: center;
+  margin: 100px auto;
+  gap: 2rem;
+}
+
+.success-text > * {
+  align-self: center;
+  max-width: 250px;
+  width: 100%;
+}
+
+.success-text h1 {
+  color: white;
+  font-size: 1.75rem;
+}
+
+.cta-success {
+  max-width: 200px;
+  width: 100%;
+  height: 30px;
+  font-size: 1.2rem;
+}

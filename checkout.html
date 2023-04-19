@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="description"
+      content="Rainydays easy checkout. Choose your payment and expect to recieve your new product soon."
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rainydays | Product page</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=Poppins:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./css/styles.css" />
+    <link rel="stylesheet" href="./css/checkout.css" />
+    <link rel="stylesheet" href="./css/media.css" />
+    <script src="./js/checkout.js" defer type="module"></script>
+    <script src="./js/ui/navbar.js" defer type="module"></script>
+    <script
+      src="https://kit.fontawesome.com/d272d399a5.js"
+      crossorigin="anonymous"
+    ></script>
+  
+  </head>
+  <body>
+    <header>
+      <nav class="flex-wrapper__nav">
+        <input type="checkbox" id="menu-checkbox" />
+        <label for="menu-checkbox" class="flex-item__nav-bars"
+          ><i class="fas fa-bars"></i
+        ></label>
+        <div class="flex-item__nav-center">
+          <a href="./index.html" class="flex-item__nav-center-header"
+            >Rainy days</a
+          >
+        </div>
+
+        <ul class="flex-item__nav-left">
+          <li><a href="./index.html">Home</a></li>
+          <li> <a href="./shopWomen.html">Women</a></li>
+          <li> <a href="./shop.html">Men</a></li>
+          <li><a href="./about.html">About</a></li>
+          <li><a href="./contact.html">Contact</a></li>
+        </ul>
+        <div class="flex-item__nav-right">
+          <i class="fa-solid fa-magnifying-glass" id="search-button"></i>
+
+          <div id="search-popup">
+            <input
+              type="text"
+              placeholder="Search..."
+              id="popup-search-input"
+            />
+            <button id="close-button">Close</button>
+          </div>
+
+          <a href="./checkout.html"><i class="fa-solid fa-bag-shopping"></i></a>
+        </div>
+        <nav>
+    </header>
+    <main>
+      <h1 class="checkout__heading">Checkout</h1>
+      <div class="flex__wrapper-checkout-page">
+        <div class="flex__wrapper-checkout-cart">
+          <a href="./product.html" class="button__back">
+            <p><i class="fa-solid fa-chevron-left"></i>Back</p>
+          </a>
+
+          <div class="flex__item-checkout-product"></div>
+
+        </div>
+        <section class="flex__item-payment">
+          <h2>Payment details</h2>
+            <form action="" class="form">
+              <label for="first-name"> First name
+                <input
+                type="text"
+                placeholder="First name"
+                name="first-name"
+                id="firstName"
+              />
+              <div class="formError" id="firstNameError">Please enter your first name</div>
+              </label>
+             
+              <label for="last-name"> Last name
+                <input
+                type="text"
+                placeholder="Last name"
+                name="last-name"
+                id="lastName"
+              />
+              <div class="formError" id="lastNameError">Please enter your last name</div>
+              </label>
+             
+              <label for="email"> Email
+                <input
+                type="email"
+                placeholder="you@email.com"
+                name="email"
+                id="email"
+              />
+              <div class="formError" id="emailError">
+                Please enter your email
+              </div>
+              </label>
+          </form>
+          <h3>Shipping adress</h3>
+          <form action="" class="form">
+            <label for="streetAdress"> Street adress</label>
+            <input
+              type="text"
+              placeholder="Street adress"
+              name="streetAdress"
+              id="streetAdress"
+            />
+            <label for="postalCode"> Postal code</label>
+            <input
+              type="text"
+              placeholder="Postal code"
+              name="postalCode"
+              id="postalCode"
+            />
+            <label for="city"> City</label>
+            <input type="text" 
+            placeholder="City" 
+            name="city" 
+            id="city" />
+          </form>
+        
+          <h3>Payment method</h3>
+          <form action="" class="form">
+            <div class="credit-card">
+              <label for="credit-card"> Credit card</label>
+              <input type="radio" name="credit-card" id="credit-card" />
+              <i class="fa-brands fa-cc-mastercard"></i>
+              <i class="fa-brands fa-cc-visa"></i>
+            </div>
+
+            <label for="name-on-card"> Name on card</label>
+            <input
+              type="text"
+              placeholder="Your name"
+              name="name-on-card"
+              id="name-on-card"
+            />
+            <label for="card-number"> Card number</label>
+            <input
+              type="text"
+              placeholder="1111 2222 3333 4444"
+              name="card-number"
+              id="card-number"
+            />
+            <label for="expiration-date"> Expiration date</label>
+            <input
+              type="text"
+              placeholder="Expiration date"
+              name="expiration-date"
+              id="expiration-date"
+            />
+            <label for="security-code"> Security code</label>
+            <input
+              type="text"
+              placeholder="123"
+              name="security-code"
+              id="security-code"
+            />
+          </form>
+          <div class="payment-options">
+            <h3>Other payment options:</h3>
+            <i class="fa-brands fa-apple-pay"></i>
+            <i class="fa-brands fa-google-pay"></i>
+          </div>
+
+          <a href="./success.html" class="cta cta-submit"
+            >Submit order <i class="fa-solid fa-chevron-right"></i>
+          </a>
+        </section>
+      </div>
+    </main>
+    <footer>
+      <div class="flex-wrapper__footer">
+        <div class="footer-media">
+          <i class="fa-brands fa-twitter"></i>
+          <i class="fa-brands fa-facebook"></i>
+          <i class="fa-brands fa-instagram"></i>
+        </div>
+        <div class="footer-links">
+          <a href="./about.html" class="flex-item__footer-a">About</a>
+          <a href="./contact.html" class="flex-item__footer-a">Contact</a>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
