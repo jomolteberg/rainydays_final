@@ -1,7 +1,12 @@
-import { womensProducts } from "./data/womensProducts.js";
+import { getProducts } from "./shopWomen.js";
 
 const productContainer = document.querySelector(".flex__wrapper-product-page");
 const exploreContainer = document.querySelector(".exploreContainer");
+const apiBase = "https://rainydays.jomolteberg.no";
+const woocommerceBase = "/wp-json/wc/store";
+const productBase = "/products";
+const femaleTagFilter = '?tag=30';
+const featuredBase = '?featured=true';
 
 const queryString = document.location.search;
 
@@ -9,72 +14,94 @@ const params = new URLSearchParams(queryString);
 
 const id = params.get("id");
 
+async function renderProduct() {
+  productContainer.innerHTML = "";
 
-function renderWomanProduct() {
-    productContainer.innerHTML = "";
-  
-    const womensProduct = womensProducts.find(womensProduct => womensProduct.id === Number(id));
-  
-    if (womensProduct) {
-      productContainer.innerHTML += `
-        <div class="flex__wrapper-product-page">
-          <h1>${womensProduct.name}</h1>
-          <img src="${womensProduct.image}">
-         
-          <h2>Select size:</h2>
-          <div class="select-size">
-            <p class="cta-size">XS</p>
-            <p class="cta-size">S</p>
-            <p class="cta-size">M</p>
-            <p class="cta-size">L</p>
-            <p class="cta-size">XL</p>
-          </div>
-  
-          <h2>Product information</h2>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quis
-            ullamcorper egestas ullamcorper a erat diam fermentum, in auctor. Nibh
-            ut nunc, eget in. Arcu etiam porttitor duis dignissim. Viverra lectus
-            donec gravida lacus ante vel elit diam.
-          </p>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quis
-            ullamcorper egestas ullamcorper a erat diam fermentum, in auctor. Nibh
-            ut nunc, eget in. Arcu etiam porttitor duis dignissim. Viverra lectus
-            donec gravida lacus ante vel elit diam.
-          </p>
-  
-          <a href="./checkoutWomen.html?id=${womensProduct.id}" class="cta-women">Add to cart</a>
-        </div>
+  const products = await getProducts();
 
-     `;
+  const product = products.find((product) => product.id === Number(id));
 
-     exploreContainer.innerHTML += `
-     <div class="exploreContainer">
-     <h2 style="display: block; align-self: start">Explore:</h2>
-     <div class="imageContainer">
-       <a href="./productWomen.html?id=100">
-         <img src="./images/jacket-woman-black-1.jpg" alt="Woman in black jacket" />
-       </a>
-       <a href="./productWomen.html?id=102">
-         <img src="./images/jacket-woman-blue-2.jpg" alt="Women in blue jacket" />
-       </a>
-       <a href="./productWomen.html?id=104">
-         <img src="./images/jacket-woman-blue-1.jpg" alt="Women in blue jacket" />
-       </a>
-       <a href="./productWomen.html?id=106">
-         <img src="./images/jacket-women-black-2.jpg" alt="Woman in black jacket" />
-       </a>
-     </div>
-   </div>
-   
-   `;
+  if (product) {
+    const productPage = document.createElement("div");
+    productPage.classList.add("flex__wrapper-product-page");
 
-    } else {
-      productContainer.innerHTML = "Product not found";
-    }
+    const title = document.createElement("h1");
+    title.innerText = product.name;
+    productPage.append(title);
+
+    const img = document.createElement("img");
+    img.src = product.images[0].src;
+    productPage.append(img);
+
+    const sizeHeader = document.createElement("h2");
+    sizeHeader.innerText = "Select size:";
+    productPage.append(sizeHeader);
+
+    const selectSize = document.createElement("div");
+    selectSize.classList.add("select-size");
+    productPage.append(selectSize);
+
+    const sizes = ["XS", "S", "M", "L", "XL"];
+    sizes.forEach((size) => {
+      const sizeElement = document.createElement("p");
+      sizeElement.classList.add("cta-size");
+      sizeElement.innerText = size;
+      selectSize.append(sizeElement);
+    });
+
+    const infoHeader = document.createElement("h2");
+    infoHeader.innerText = "Product information";
+    productPage.append(infoHeader);
+
+    const info = document.createElement("p");
+    info.innerHTML = product.description;
+    productPage.append(info);
+
+    const addToCart = document.createElement("a");
+    addToCart.href = `./checkoutWomen.html?id=${product.id}`;
+    addToCart.classList.add("cta");
+    addToCart.innerText = "Add to cart";
+    productPage.append(addToCart);
+
+    productContainer.append(productPage);
+
   }
+  await renderFeaturedExploreProducts();
+}
 
-  renderWomanProduct();
-  
- 
+async function renderFeaturedExploreProducts() {
+  const url = apiBase + woocommerceBase + productBase + featuredBase + '&' + femaleTagFilter.replace('?', '');
+
+  try {
+    const response = await fetch(url);
+    const featuredProducts = await response.json();
+
+    exploreContainer.innerHTML = '';
+
+    const exploreHeader = document.createElement("h2");
+    exploreHeader.innerText = "Explore:";
+    exploreHeader.style.display = "block";
+    exploreContainer.append(exploreHeader);
+
+    const imageContainer = document.createElement("div");
+    imageContainer.classList.add("imageContainer");
+    exploreContainer.append(imageContainer);
+
+    for (const product of featuredProducts) {
+      const productLink = document.createElement("a");
+      productLink.href = `./productWomen.html?id=${product.id}`;
+      imageContainer.append(productLink);
+
+      const img = document.createElement("img");
+      img.src = product.images[0].src;
+      img.alt = product.images[0].alt;
+      productLink.append(img);
+    }
+
+  } catch (error) {
+    console.error("Error fetching featured products:", error);
+  }
+}
+
+
+renderProduct();

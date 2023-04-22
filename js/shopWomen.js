@@ -1,82 +1,114 @@
-import { womensProducts } from "./data/womensProducts.js";
+const apiBase = "https://rainydays.jomolteberg.no";
+const woocommerceBase = "/wp-json/wc/store";
+const productBase = "/products";
+const femaleTagFilter = '?tag=30';
+const featuredBase = '?featured=true';
 
-const productContainer = document.querySelector(".grid__wrapper-products");
-const sortOptions = document.querySelectorAll(".sort-options a");
-const colorSelect = document.querySelector("#color-select");
-const priceRange = document.querySelector("#price-range");
+const fullFemaleProductURL = apiBase + woocommerceBase + productBase + femaleTagFilter;
 
+export async function getProducts() {
+    const response = await fetch(fullFemaleProductURL);
+    const products = await response.json();
+    return products;
 
-export let womenProductsToRender = womensProducts;
+}
 
-// Event listener for each sort option
-sortOptions.forEach(option => {
-  option.addEventListener("click", () => {
-    const sortOption = option.id;
-    womenProductsToRender.sort((a, b) => {
-      if (sortOption === "sort-by-price-low-to-high") {
-        return parseInt(a.price.slice(1)) - parseInt(b.price.slice(1));
-      } else if (sortOption === "sort-by-price-high-to-low") {
-        return parseInt(b.price.slice(1)) - parseInt(a.price.slice(1));
-      } else if (sortOption === "sort-by-name-a-to-z") {
-        return a.name.localeCompare(b.name);
-      } else {
-        return b.name.localeCompare(a.name);
-      }
-    });
-    renderWomanProducts();
-  });
-});
+function createProductHTML(product) {
+    const productsContainer = document.querySelector(".productsContainer");
 
-// Event listener for color select
-colorSelect.addEventListener("change", () => {
-  const selectedColor = colorSelect.value;
-  if (selectedColor === "") {
-    womenProductsToRender = womensProducts;
-  } else {
-    womenProductsToRender = womensProducts.filter(womensProducts => {
-      if (Array.isArray(womensProducts.color)) {
-        return womensProducts.color.includes(selectedColor);
-      } else {
-        return womensProducts.color === selectedColor;
-      }
-    });
-  }
-  renderWomanProducts();
-});
+    const productContainer = document.createElement("div");
+    productContainer.classList.add("product-card");
+    productContainer.id = product.id;
 
-// Event listener for price range select
-priceRange.addEventListener("change", () => {
-  const selectedPrice = priceRange.value;
-  if (selectedPrice === "") {
-    womenProductsToRender = womensProducts;
-  } else {
-    womenProductsToRender = womensProducts.filter(womensProducts => {
-      const [minPrice, maxPrice] = selectedPrice.split("-");
-      return parseInt(womensProducts.price.slice(1)) >= parseInt(minPrice.slice(1)) &&
-        parseInt(womensProducts.price.slice(1)) <= parseInt(maxPrice.slice(1));
-    });
-  }
-  renderWomanProducts();
-});
+    const productLink = document.createElement("a");
+    productLink.href = `productWomen.html?id=${product.id}`;
+    productContainer.append(productLink);
 
+    for (let i = 0; i < product.images.length; i++) {
+        const imgData = product.images[i];
+        const img = document.createElement("img");
+        img.src = imgData.src;
+        img.alt = imgData.alt;
+        productLink.append(img);
+    }
 
-export function renderWomanProducts() {
-  productContainer.innerHTML = "";
+    const title = document.createElement("h4");
+    title.innerText = product.name;
+    productLink.append(title);
 
-  womenProductsToRender.forEach(function (womensProducts) {
-    productContainer.innerHTML += `
-      <div class="product-card">
-        <a href="../productWomen.html?id=${womensProducts.id}">
-          <img class="flex__item-product-img" src="${womensProducts.image}">
-          <div class="flex__item-product-info">
-            <h4>${womensProducts.name}</h4>
-            <p class="flex__item-product-price">${womensProducts.price}</p>
-          </div>
-        </a>
-      </div>
-    `;
-  });
+    const price = document.createElement("p");
+    price.innerText = product.prices.currency_symbol + " " + product.prices.price;
+    productLink.append(price);
+
+    productsContainer.append(productContainer);
 }
 
 
-renderWomanProducts();
+function createProductsHTML(products) {
+    for (let i = 0; i < products.length; i++) {
+        const product = products[i];
+        createProductHTML(product);
+    }
+}
+
+async function getFeaturedProducts() {
+    const url = apiBase + woocommerceBase + productBase + featuredBase + '&' + femaleTagFilter.replace('?', '');
+    try {
+        const response = await fetch(url);
+        const data = await response.json();
+        if (data && data.length > 0) {
+            createFeaturedProductHTML(data[0]);
+        } else {
+            console.error("No featured products found.");
+        }
+    } catch (error) {
+        console.error("Error fetching featured product:", error);
+    }
+}
+
+function createFeaturedProductHTML(product) {
+    const featuredProductContainer = document.querySelector(".featuredContainer");
+    featuredProductContainer.id = product.id;
+    featuredProductContainer.innerHTML = ''; 
+
+    const featuredHeader = document.createElement("h2");
+    featuredHeader.innerText = "Featured product";
+    featuredHeader.classList.add("featuredHeader", "women");
+    featuredProductContainer.append(featuredHeader);
+
+    const productLink = document.createElement("a");
+    productLink.href = `productWomen.html?id=${product.id}`;
+    featuredProductContainer.append(productLink);
+
+    for (let i = 0; i < product.images.length; i++) {
+        const imgData = product.images[i];
+        const img = document.createElement("img");
+        img.src = imgData.src;
+        img.alt = imgData.alt;
+        productLink.append(img);
+    }
+
+    const title = document.createElement("h4");
+    title.innerText = product.name;
+    productLink.append(title);
+
+    const price = document.createElement("p");
+    price.innerText = product.prices.currency_symbol + " " + product.prices.price;
+    productLink.append(price);
+}
+
+export async function productsPage(sortedProducts = null) {
+    const productsContainer = document.querySelector(".productsContainer");
+    productsContainer.innerHTML = ''; 
+
+    const products = await getProducts();
+
+    if (sortedProducts) {
+        createProductsHTML(sortedProducts);
+    } else {
+        createProductsHTML(products);
+    };
+    getFeaturedProducts();
+}
+
+productsPage();

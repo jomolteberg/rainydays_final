@@ -18,6 +18,7 @@
     <link rel="stylesheet" href="./css/styles.css" />
     <link rel="stylesheet" href="./css/shop.css" />
     <link rel="stylesheet" href="./css/media.css" />
+
     <script src="./js/shop.js" defer type="module"></script>
     <script src="./js/ui/sidebar.js" defer type="module"></script>
     <script src="./js/ui/navbar.js" defer type="module"></script>
@@ -41,8 +42,8 @@
 
         <ul class="flex-item__nav-left">
           <li><a href="./index.html">Home</a></li>
-          <li> <a href="./shopWomen.html">Women</a></li>
-          <li> <a href="./shop.html" class="active">Men</a></li>
+          <li><a href="./shopWomen.html">Women</a></li>
+          <li><a href="./shop.html" class="active">Men</a></li>
           <li><a href="./about.html">About</a></li>
           <li><a href="./contact.html">Contact</a></li>
         </ul>
@@ -71,16 +72,15 @@
         <h1 class="shop__text-mobile">Men</h1>
       </section>
 
+      <div class="featuredContainer"></div>
+
       <div class="filter_sort-by">
         <h3 id="sidebar-toggle">
           Filter options <i class="fa-solid fa-angle-down"></i>
         </h3>
       </div>
 
-      <section class="grid__wrapper-products">
-        <div class="flex__item-product-img"></div>
-        <div class="flex__item-product-info"></div>
-      </section>
+      <div class="productsContainer"></div>
 
       <div id="sidebar">
         <button id="sidebar-close-button">X</button>
@@ -114,8 +114,8 @@
           <label for="price-range">Price range:</label>
           <select id="price-range">
             <option value="">Select a price</option>
-            <option value="$100-$200">$100 - $200</option>
-            <option value="$200-$300">$200 - $300</option>
+            <option value="499-999">499 kr - 999 kr</option>
+            <option value="1000-1499">1000 kr - 1499 kr</option>
           </select>
         </form>
       </div>

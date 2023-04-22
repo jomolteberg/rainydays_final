@@ -72,7 +72,7 @@
   .cta-women {
     margin: 40px;
     font-size: 1rem;
-    min-height: 20px;
+    min-height: 50px;
     height: 20px;
     border: var(--color-main) 2px solid;
     max-width: 150px;
@@ -130,13 +130,14 @@
 
   /* Shop page */
 
-  .grid__wrapper-products {
+  .productsContainer {
     grid-template-columns: repeat(2, 1fr);
     margin: 2rem 2rem;
   }
 
   .product-card {
-    min-width: 140px;
+    min-width: 170px;
+    padding: 5px;
   }
   .filter_sort-by {
     margin: 0 25px;
@@ -155,6 +156,10 @@
 
   .filter_sort-by h3 {
     font-size: 1.3rem;
+  }
+
+  .featuredContainer img {
+    max-width: 280px;
   }
 
   /* Checkout page */

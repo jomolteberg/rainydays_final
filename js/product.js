@@ -1,7 +1,12 @@
-import products from "./data/mensProducts.js";
+import { getProducts } from "./shop.js";
 
 const productContainer = document.querySelector(".flex__wrapper-product-page");
 const exploreContainer = document.querySelector(".exploreContainer");
+const apiBase = "https://rainydays.jomolteberg.no";
+const woocommerceBase = "/wp-json/wc/store";
+const productBase = "/products";
+const maleTagFilter = '?tag=29';
+const featuredBase = '?featured=true';
 
 const queryString = document.location.search;
 
@@ -9,72 +14,94 @@ const params = new URLSearchParams(queryString);
 
 const id = params.get("id");
 
+async function renderProduct() {
+  productContainer.innerHTML = "";
 
-function renderProduct() {
-    productContainer.innerHTML = "";
-  
-    const product = products.find(product => product.id === Number(id));
-  
-    if (product) {
-      productContainer.innerHTML += `
-        <div class="flex__wrapper-product-page">
-          <h1>${product.name}</h1>
-          <img src="${product.image}">
-         
-          <h2>Select size:</h2>
-          <div class="select-size">
-            <p class="cta-size">XS</p>
-            <p class="cta-size">S</p>
-            <p class="cta-size">M</p>
-            <p class="cta-size">L</p>
-            <p class="cta-size">XL</p>
-          </div>
-  
-          <h2>Product information</h2>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quis
-            ullamcorper egestas ullamcorper a erat diam fermentum, in auctor. Nibh
-            ut nunc, eget in. Arcu etiam porttitor duis dignissim. Viverra lectus
-            donec gravida lacus ante vel elit diam.
-          </p>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quis
-            ullamcorper egestas ullamcorper a erat diam fermentum, in auctor. Nibh
-            ut nunc, eget in. Arcu etiam porttitor duis dignissim. Viverra lectus
-            donec gravida lacus ante vel elit diam.
-          </p>
-  
-          <a href="./checkout.html?id=${product.id}" class="cta">Add to cart</a>
-        </div>
+  const products = await getProducts();
 
-     `;
+  const product = products.find((product) => product.id === Number(id));
 
-     exploreContainer.innerHTML += `
-     <div class="exploreContainer">
-     <h2 style="display: block; align-self: start">Explore:</h2>
-     <div class="imageContainer">
-       <a href="./product.html?id=2">
-         <img src="./images/sweater-black-1.jpg" alt="Man in black jacket" />
-       </a>
-       <a href="./product.html?id=4">
-         <img src="./images/jacket-green-1.jpg" alt="Man in green jacket" />
-       </a>
-       <a href="./product.html?id=6">
-         <img src="./images/jacket-black-1.jpg" alt="Man in black jacket" />
-       </a>
-       <a href="./product.html?id=8">
-         <img src="./images/jacket-grey-blue-1.jpg" alt="Man in grey and blue jacket" />
-       </a>
-     </div>
-   </div>
-   
-   `;
+  if (product) {
+    const productPage = document.createElement("div");
+    productPage.classList.add("flex__wrapper-product-page");
 
-    } else {
-      productContainer.innerHTML = "Product not found";
-    }
+    const title = document.createElement("h1");
+    title.innerText = product.name;
+    productPage.append(title);
+
+    const img = document.createElement("img");
+    img.src = product.images[0].src;
+    productPage.append(img);
+
+    const sizeHeader = document.createElement("h2");
+    sizeHeader.innerText = "Select size:";
+    productPage.append(sizeHeader);
+
+    const selectSize = document.createElement("div");
+    selectSize.classList.add("select-size");
+    productPage.append(selectSize);
+
+    const sizes = ["XS", "S", "M", "L", "XL"];
+    sizes.forEach((size) => {
+      const sizeElement = document.createElement("p");
+      sizeElement.classList.add("cta-size");
+      sizeElement.innerText = size;
+      selectSize.append(sizeElement);
+    });
+
+    const infoHeader = document.createElement("h2");
+    infoHeader.innerText = "Product information";
+    productPage.append(infoHeader);
+
+    const info = document.createElement("p");
+    info.innerHTML = product.description;
+    productPage.append(info);
+
+    const addToCart = document.createElement("a");
+    addToCart.href = `./checkout.html?id=${product.id}`;
+    addToCart.classList.add("cta");
+    addToCart.innerText = "Add to cart";
+    productPage.append(addToCart);
+
+    productContainer.append(productPage);
+
   }
+  await renderFeaturedExploreProducts();
+}
 
-  renderProduct();
-  
- 
+async function renderFeaturedExploreProducts() {
+  const url = apiBase + woocommerceBase + productBase + featuredBase + '&' + maleTagFilter.replace('?', '');
+
+  try {
+    const response = await fetch(url);
+    const featuredProducts = await response.json();
+
+    exploreContainer.innerHTML = '';
+
+    const exploreHeader = document.createElement("h2");
+    exploreHeader.innerText = "Explore:";
+    exploreHeader.style.display = "block";
+    exploreContainer.append(exploreHeader);
+
+    const imageContainer = document.createElement("div");
+    imageContainer.classList.add("imageContainer");
+    exploreContainer.append(imageContainer);
+
+    for (const product of featuredProducts) {
+      const productLink = document.createElement("a");
+      productLink.href = `./product.html?id=${product.id}`;
+      imageContainer.append(productLink);
+
+      const img = document.createElement("img");
+      img.src = product.images[0].src;
+      img.alt = product.images[0].alt;
+      productLink.append(img);
+    }
+
+  } catch (error) {
+    console.error("Error fetching featured products:", error);
+  }
+}
+
+
+renderProduct();

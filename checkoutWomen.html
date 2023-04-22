@@ -66,8 +66,8 @@
       <h1 class="checkout__heading-women">Checkout</h1>
       <div class="flex__wrapper-checkout-page">
         <div class="flex__wrapper-checkout-cart">
-          <a href="./productWomen.html" class="button__back-women">
-            <p><i class="fa-solid fa-chevron-left" class="women"></i>Back</p>
+          <a href="./product.html" class="button__back">
+            <p><i class="fa-solid fa-chevron-left"></i>Back</p>
           </a>
 
           <div class="flex__item-checkout-product"></div>
@@ -75,100 +75,131 @@
         </div>
         <section class="flex__item-payment">
           <h2>Payment details</h2>
-          <form method="POST">
-            <label for="first-name"> First name</label>
-            <input
-              type="text"
-              placeholder="First name"
-              name="first-name"
-              id="first-name"
-            />
-            <label for="last-name"> Last name</label>
-            <input
-              type="text"
-              placeholder="Last name"
-              name="last-name"
-              id="last-name"
-            />
-          </form>
-          <h3>Shipping adress</h3>
-          <form method="POST">
-            <label for="street-adress"> Street adress</label>
-            <input
-              type="text"
-              placeholder="Street adress"
-              name="street-adress"
-              id="street-adress"
-            />
-            <label for="postal-code"> Postal code</label>
-            <input
-              type="text"
-              placeholder="Postal code"
-              name="postal-code"
-              id="postal-code"
-            />
-            <label for="city"> City</label>
-            <input type="text" placeholder="City" name="city" id="city" />
-          </form>
-          <div class="checkbox__billing-shipping">
-            <input
-              type="checkbox"
-              class="checkbox"
-              id="billing-shipping"
-              name="billing-shipping"
-            />
-            <label for="billing-shipping"
-              >My billing adress is the same as my shipping adress.</label
-            >
-          </div>
-          <h3>Payment method</h3>
-          <form method="POST">
-            <div class="credit-card">
-              <label for="credit-card"> Credit card</label>
-              <input type="radio" name="credit-card" id="credit-card" />
-              <i class="fa-brands fa-cc-mastercard"></i>
-              <i class="fa-brands fa-cc-visa"></i>
+          <form action="" class="form">
+            <div class="form-group">
+              <label for="first-name">First name</label>
+              <input
+                type="text"
+                placeholder="First name"
+                name="first-name"
+                id="firstName"
+              />
+              <div class="formError" id="firstNameError">Please enter your first name</div>
             </div>
-
-            <label for="name-on-card"> Name on card</label>
-            <input
-              type="text"
-              placeholder="Your name"
-              name="name-on-card"
-              id="name-on-card"
-            />
-            <label for="card-number"> Card number</label>
-            <input
-              type="text"
-              placeholder="1111 2222 3333 4444"
-              name="card-number"
-              id="card-number"
-            />
-            <label for="expiration-date"> Expiration date</label>
-            <input
-              type="text"
-              placeholder="Expiration date"
-              name="expiration-date"
-              id="expiration-date"
-            />
-            <label for="security-code"> Security code</label>
-            <input
-              type="text"
-              placeholder="123"
-              name="security-code"
-              id="security-code"
-            />
-          </form>
+            <div class="form-group">
+              <label for="last-name">Last name</label>
+              <input
+                type="text"
+                placeholder="Last name"
+                name="last-name"
+                id="lastName"
+              />
+              <div class="formError" id="lastNameError">Please enter your last name</div>
+            </div>
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input
+                type="email"
+                placeholder="you@email.com"
+                name="email"
+                id="email"
+              />
+              <div class="formError" id="emailError">
+                Please enter your email
+              </div>
+            </div>
+          
+            <h3>Shipping address</h3>
+            <div class="form-group">
+              <label for="streetAdress">Street address</label>
+              <input
+                type="text"
+                placeholder="Street address"
+                name="streetAdress"
+                id="streetAdress"
+              />
+              <div class="formError" id="streetAdressError">Please enter your street address</div>
+            </div>
+            <div class="form-group">
+              <label for="postalCode">Postal code</label>
+              <input
+                type="text"
+                placeholder="Postal code"
+                name="postalCode"
+                id="postalCode"
+              />
+              <div class="formError" id="postalCodeError">Please enter your postal code</div>
+            </div>
+            <div class="form-group">
+              <label for="city">City</label>
+              <input type="text" 
+              placeholder="City" 
+              name="city" 
+              id="city" />
+              <div class="formError" id="cityError">Please enter your city</div>
+            </div>
+          
+            <h3>Payment method</h3>
+            <div class="form-group">
+              <label for="creditCard">Credit card</label>
+              <div class="creditCardIcons">
+                <input type="radio" 
+                name="credit-card" 
+                id="creditCard" />
+                <i class="fa-brands fa-cc-mastercard"></i>
+                <i class="fa-brands fa-cc-visa"></i>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="nameOnCard">Name on card</label>
+              <input
+                type="text"
+                placeholder="Your name"
+                name="name-on-card"
+                id="nameOnCard"
+              />
+              <div class="formError" id="nameOnCardError">Please enter the name on the card</div>
+            </div>
+            <div class="form-group">
+              <label for="cardNumber">Card number</label>
+              <input
+                type="text"
+                placeholder="1111 2222 3333 4444"
+                name="card-number"
+                id="cardNumber"
+              />
+              <div class="formError" id="cardNumberError">Please enter your card number</div>
+            </div>
+            <div class="form-group">
+              <label for="expirationDate">Expiration date</label>
+              <input
+                type="text"
+                placeholder="Expiration date"
+                name="expiration-date"
+                id="expirationDate"
+              />
+              <div class="formError" id="expirationDateError">Please enter the expiration date</div>
+            </div>
+            <div class="form-group">
+              <label for="securityCode">Security code</label>
+              <input
+                type="text"
+                placeholder="123"
+                name="security-code"
+                id="securityCode"
+              />
+              <div class="formError" id="securityCodeError">Please enter the security code</div>
+            </div>
           <div class="payment-options">
             <h3>Other payment options:</h3>
             <i class="fa-brands fa-apple-pay"></i>
             <i class="fa-brands fa-google-pay"></i>
           </div>
-
-          <a href="./success.html" class="cta-women cta-submit-women"
-            >Submit order <i class="fa-solid fa-chevron-right"></i>
-          </a>
+          <button class="cta cta-submit" type="submit" id="submitBtn">Submit order <i class="fa-solid fa-chevron-right"></i></button>
+        </form>
+        <div class="successMessage">Nicely done! You have successfully ordered your product!</div>
         </section>
+       
       </div>
     </main>
     <footer>
