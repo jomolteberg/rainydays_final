@@ -16,18 +16,37 @@
 
   #menu-checkbox:checked ~ .flex-item__nav-left {
     display: block;
-    background-color: var(--color-main);
-    position: absolute;
-    flex-direction: column;
-    top: 100%;
-    z-index: 1;
-    padding: 10px 10px;
-    margin: -12px 0px 0px 10px;
-  }
-  nav li a {
-    color: white;
-    padding: 10px 10px 5px 0px;
+    left: 0%;
     display: flex;
+  }
+
+  .flex-item__nav-left,
+  #menu-checkbox {
+    display: none;
+    list-style: none;
+  }
+
+  .flex-item__nav-left {
+    height: 40vh;
+    width: 100%;
+    position: fixed;
+    background: white;
+    top: 4.7rem;
+    left: 100%;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    transition: all 0.7s;
+    gap: 2rem;
+    margin-top: 1rem;
+    z-index: 999;
+  }
+
+  .flex-item__nav-left a {
+    text-decoration: none;
+    color: var(--color-main);
+    font-size: 1.5rem;
+    font-weight: 600;
   }
   #menu-checkbox,
   .flex-item__nav-left {

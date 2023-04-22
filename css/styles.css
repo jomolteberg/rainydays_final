@@ -158,7 +158,6 @@ footer a {
 }
 
 
-/* Searchbar */
 
 .search-container input {
   padding: 7px;
@@ -167,13 +166,16 @@ footer a {
 
 #search-button {
   cursor: pointer;
+  position: relative;
 }
 
 #search-popup {
   position: absolute;
-  left: 0;
+  top: 0;
+  left: 35px;
   z-index: 1;
   display: none;
+  transition: all 0.3s ease-in-out;
 }
 
 #search-popup input[type="text"] {
@@ -192,7 +194,7 @@ footer a {
 
 #close-button {
   float: right;
-}
+} 
 
 
 .errorMessage {
