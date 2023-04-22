@@ -69,7 +69,7 @@ form {
   color: var(--color-main);
 }
 
-input, 
+input,
 label,
 textarea {
   display: flex;

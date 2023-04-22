@@ -5,8 +5,8 @@ const exploreContainer = document.querySelector(".exploreContainer");
 const apiBase = "https://rainydays.jomolteberg.no";
 const woocommerceBase = "/wp-json/wc/store";
 const productBase = "/products";
-const maleTagFilter = '?tag=29';
-const featuredBase = '?featured=true';
+const maleTagFilter = "?tag=29";
+const featuredBase = "?featured=true";
 
 const queryString = document.location.search;
 
@@ -64,19 +64,24 @@ async function renderProduct() {
     productPage.append(addToCart);
 
     productContainer.append(productPage);
-
   }
   await renderFeaturedExploreProducts();
 }
 
 async function renderFeaturedExploreProducts() {
-  const url = apiBase + woocommerceBase + productBase + featuredBase + '&' + maleTagFilter.replace('?', '');
+  const url =
+    apiBase +
+    woocommerceBase +
+    productBase +
+    featuredBase +
+    "&" +
+    maleTagFilter.replace("?", "");
 
   try {
     const response = await fetch(url);
     const featuredProducts = await response.json();
 
-    exploreContainer.innerHTML = '';
+    exploreContainer.innerHTML = "";
 
     const exploreHeader = document.createElement("h2");
     exploreHeader.innerText = "Explore:";
@@ -97,11 +102,9 @@ async function renderFeaturedExploreProducts() {
       img.alt = product.images[0].alt;
       productLink.append(img);
     }
-
   } catch (error) {
     console.error("Error fetching featured products:", error);
   }
 }
-
 
 renderProduct();

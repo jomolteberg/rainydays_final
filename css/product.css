@@ -1,50 +1,47 @@
-
 .flex__wrapper-product-page {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin: 3rem auto;
-    gap: 3rem;
-    max-width: 550px;
-    width: 100%;
-    text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 3rem auto;
+  gap: 3rem;
+  max-width: 550px;
+  width: 100%;
+  text-align: center;
 }
 
 .flex__wrapper-product-page p {
-    text-align: left;
-    text-align-last: left;
+  text-align: left;
+  text-align-last: left;
 }
 
 .flex__wrapper-product-page .cta {
-    margin-top: 3rem;
-    margin-bottom: 3rem;
+  margin-top: 3rem;
+  margin-bottom: 3rem;
 }
 
 .select-size {
-    display: flex;
+  display: flex;
 }
 
 .exploreContainer {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-bottom: 3rem;
-  }
-  
-  .imageContainer {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 1rem;
-    margin: 1rem auto;
-  }
-
-.imageContainer > a {
-    box-shadow: rgba(20, 108, 130, 0.16) 0px 3px 6px,
-    rgba(20, 108, 130, 0.23) 0px 3px 6px;
-    max-width: 250px;
-    width: 100%;
-    padding: 5px;
-   
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 3rem;
 }
 
+.imageContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+  margin: 1rem auto;
+}
+
+.imageContainer > a {
+  box-shadow: rgba(20, 108, 130, 0.16) 0px 3px 6px,
+    rgba(20, 108, 130, 0.23) 0px 3px 6px;
+  max-width: 250px;
+  width: 100%;
+  padding: 5px;
+}

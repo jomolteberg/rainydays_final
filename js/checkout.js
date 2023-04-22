@@ -17,14 +17,14 @@ async function renderProduct() {
   const product = products.find((product) => product.id === Number(id));
 
   if (product) {
-    const flexWrapper = document.createElement('div');
-    flexWrapper.className = 'flex__wrapper-checkout-cart';
+    const flexWrapper = document.createElement("div");
+    flexWrapper.className = "flex__wrapper-checkout-cart";
     cartContainer.append(flexWrapper);
 
-    const backLink = document.createElement('a');
+    const backLink = document.createElement("a");
     backLink.href = `./product.html?id=${product.id}`;
-    backLink.style.display = 'block';
-    backLink.className = 'button__back';
+    backLink.style.display = "block";
+    backLink.className = "button__back";
     flexWrapper.append(backLink);
 
     // const backText = document.createElement('p');
@@ -34,34 +34,33 @@ async function renderProduct() {
     // backText.append(document.createTextNode('Back'));
     // backLink.append(backText);
 
-    const productArea = document.createElement('div');
-    productArea.className = 'flex__item-checkout-product';
+    const productArea = document.createElement("div");
+    productArea.className = "flex__item-checkout-product";
     flexWrapper.append(productArea);
-  
-    const productImg = document.createElement('img');
-    productImg.src = product.images[0].src; 
+
+    const productImg = document.createElement("img");
+    productImg.src = product.images[0].src;
     productImg.alt = product.name;
     productArea.append(productImg);
-  
-    const productName = document.createElement('p');
+
+    const productName = document.createElement("p");
     productName.textContent = product.name;
     productArea.append(productName);
-  
-    const productPrice = document.createElement('p');
-    productPrice.textContent = product.prices.currency_symbol + " " + product.prices.price; 
-    productArea.append(productPrice);
 
+    const productPrice = document.createElement("p");
+    productPrice.textContent =
+      product.prices.currency_symbol + " " + product.prices.price;
+    productArea.append(productPrice);
   } else {
-    const emptyCartText = document.createElement('p');
-    emptyCartText.style.fontSize = '24px';
-    emptyCartText.style.color = '#ff1e1e';
-    emptyCartText.textContent = 'Your cart is empty.';
+    const emptyCartText = document.createElement("p");
+    emptyCartText.style.fontSize = "24px";
+    emptyCartText.style.color = "#ff1e1e";
+    emptyCartText.textContent = "Your cart is empty.";
     cartContainer.append(emptyCartText);
   }
 }
 
 renderProduct();
-
 
 // Form validation
 
@@ -84,9 +83,6 @@ const postalCodeError = document.querySelector("#postalCodeError");
 const city = document.querySelector("#city");
 const cityError = document.querySelector("#cityError");
 
-const creditCard = document.querySelector("#creditCard");
-const creditCardError = document.querySelector("#creditCardError");
-
 const nameOnCard = document.querySelector("#nameOnCard");
 const nameOnCardError = document.querySelector("#nameOnCardError");
 
@@ -98,8 +94,6 @@ const expirationDateError = document.querySelector("#expirationDateError");
 
 const securityCode = document.querySelector("#securityCode");
 const securityCodeError = document.querySelector("#securityCodeError");
-
-
 
 const successMessage = document.querySelector(".successMessage");
 
@@ -186,10 +180,9 @@ const validateForm = () => {
 
 form.addEventListener("submit", validateForm);
 
-
 const submitBtn = document.querySelector("#submitBtn");
 
 submitBtn.addEventListener("click", (event) => {
-  event.preventDefault(); 
-  validateForm(); 
+  event.preventDefault();
+  validateForm();
 });

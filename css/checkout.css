@@ -73,7 +73,6 @@
   margin-left: 20px;
 }
 
-
 .cta-submit-women {
   background-color: var(--color-main-women);
   color: white;
@@ -166,7 +165,6 @@
 
 .form-group input:focus {
   border-color: var(--color-main);
-
 }
 
 .payment-options {

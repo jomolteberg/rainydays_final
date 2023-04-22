@@ -35,7 +35,6 @@ body {
   flex-direction: column;
 }
 
-
 nav a {
   font-weight: bold;
 }
@@ -157,8 +156,6 @@ footer a {
   color: white;
 }
 
-
-
 .search-container input {
   padding: 7px;
   margin: 0 8px;
@@ -194,8 +191,7 @@ footer a {
 
 #close-button {
   float: right;
-} 
-
+}
 
 .errorMessage {
   background-color: rgba(255, 0, 0, 0.479);
@@ -209,8 +205,8 @@ footer a {
 .successMessage {
   background-color: white;
   padding: 30px;
-  border: 3px solid #2BAE66FF;
-  color: #2BAE66FF;
+  border: 3px solid #2bae66ff;
+  color: #2bae66ff;
   width: fit-content;
   text-align: center;
   display: none;

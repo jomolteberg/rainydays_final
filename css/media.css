@@ -1,6 +1,4 @@
 @media (max-width: 800px) {
- 
-  
   header {
     position: relative;
   }
@@ -12,7 +10,6 @@
   footer {
     margin-top: 1rem;
   }
-
 
   #menu-checkbox:checked ~ .flex-item__nav-left {
     display: block;
@@ -138,7 +135,6 @@
   }
 
   .image__shop-section .cta-women {
-   
     border: var(--color-main-women) 2px solid;
     background-color: var(--color-main-women);
   }

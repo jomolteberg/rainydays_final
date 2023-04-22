@@ -53,14 +53,18 @@ const validateForm = () => {
     phoneError.style.display = "block";
   }
 
-  if (checkLength(firstName.value, 0) && checkLength(lastName.value, 0) && checkLength(message.value, 9) && checkPhone(phone.value) === true && checkEmail(email.value) === true) {
+  if (
+    checkLength(firstName.value, 0) &&
+    checkLength(lastName.value, 0) &&
+    checkLength(message.value, 9) &&
+    checkPhone(phone.value) === true &&
+    checkEmail(email.value) === true
+  ) {
     successMessage.style.display = "block";
-    console.log("test")
-
-  }  else {
+    console.log("test");
+  } else {
     successMessage.style.display = "none";
   }
-
 };
 
 form.addEventListener("submit", validateForm);
