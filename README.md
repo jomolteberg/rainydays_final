@@ -55,11 +55,9 @@ Here you can detail any information you want to provide regarding contributing t
 
 ## Contact
 
-This is where you can leave your social links for people to contact you, such as a LinkedIn profile or Twitter link e.g.
+Feel free to contact me:
 
-[My Twitter page](www.twitter.com)
-
-[My LinkedIn page](www.linkedin.com)
+[LinkedIn](https://www.linkedin.com/in/john-oscar-molteberg-637177180/)
 
 ## License
 
