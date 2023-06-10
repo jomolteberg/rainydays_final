@@ -1,6 +1,6 @@
 # Rainy Days
 
-![image](https://user-images.githubusercontent.com/52622303/164316813-4b12d99f-aeb7-4069-85cf-e72b3a50ac99.png)
+![image](./images/black-white-jacket-image.png)
 
 Rainy Days is an online clothing store specializing in high-quality outerwear designed for hiking and outdoor adventures. Catering to adults, the store combines a modern, clean, and serious design aesthetic with a user-friendly interface. This website is a school project created for the Front-End Development course at Noroff School of Technology and Digital Media.
 
