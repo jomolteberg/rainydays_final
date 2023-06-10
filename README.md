@@ -2,24 +2,31 @@
 
 ![image](https://user-images.githubusercontent.com/52622303/164316813-4b12d99f-aeb7-4069-85cf-e72b3a50ac99.png)
 
-A simple overview of the use/purpose of the project.
+Rainy Days is an online clothing store specializing in high-quality outerwear designed for hiking and outdoor adventures. Catering to adults, the store combines a modern, clean, and serious design aesthetic with a user-friendly interface. This website is a school project created for the Front-End Development course at Noroff School of Technology and Digital Media.
 
 ## Description
 
-Add a more detailed description of what your project entails and set out to do.
+Rainy Days is the destination for those seeking durable and stylish outerwear for hiking in the mountains and other outdoor activities. With a design ethos centered around seriousness, cleanliness, modernity, and high quality, Rainy Days aspires to resonate with adults who are passionate about the great outdoors. The store’s wide range of products is showcased through an intuitive navigation system, detailed filtering options, and high-resolution images. 
 
-You can add some bullet points if you'd like to:
+### Key Features
 
-- List item 1
-- List item 2
-- List item 3
+- Intuitive Search Bar: An easy-to-use search bar for users to quickly find the products they are looking for.
+
+- Filter Options: Users can filter products by color and price range through a dropdown menu.
+
+- Sort By Options: Allows users to sort products by price (low to high, high to low) and name (A to Z, Z to A).
+
+- Product Categories: The website includes separate sections for men’s and women’s clothing.
+
+- High-Quality Images: The store uses high-resolution images to give users a clear view of the products.
 
 ## Built With
 
-You can list a the tech stack that you've used over here
-
-- [React.js](https://reactjs.org/)
-- [Bootstrap](https://getbootstrap.com)
+HTML
+CSS
+JavaScript
+WordPress REST API (Headless CMS)
+Figma (for design)
 
 ## Getting Started
 
@@ -38,8 +45,6 @@ npm install
 ```
 
 ### Running
-
-Here is where you detail how to run the app. It typically involves the commands you'd need to run to start the project e.g.
 
 To run the app, run the following commands:
 
