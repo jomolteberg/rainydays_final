@@ -22,11 +22,11 @@ Rainy Days is the destination for those seeking durable and stylish outerwear fo
 
 ## Built With
 
-HTML
-CSS
-JavaScript
-WordPress REST API (Headless CMS)
-Figma (for design)
+- HTML
+- CSS
+- JavaScript
+- WordPress REST API (Headless CMS)
+- Figma (for design)
 
 ## Getting Started
 
